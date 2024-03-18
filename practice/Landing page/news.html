@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+</head>
+<body style="border-color: aliceblue;">
+    <div class="text" style="background-color: rgb(235, 235, 144);">
+        <!-- Content will be displayed here -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Base URL for the mock API
+        const baseURL = 'https://65f15763da8c6584131d7aef.mockapi.io/blogsData/1';
+
+        // Function to get blog content
+        async function getBlogContent(id) {
+            
+            try {
+                const baseURL = `https://65f15763da8c6584131d7aef.mockapi.io/blogsData/${id}`;
+                const response = await axios.get(baseURL);
+                return response.data.author;
+            } catch (error) {
+                console.error('Error fetching blog content:', error);
+                throw error;
+            }
+        }
+
+        // Function to display blog content in the div
+        async function displayBlogContent() {
+            try {
+                for (let i = 0; i <= 10; i++) {
+                id=i+1;
+                const content = await getBlogContent(id);
+                const textDiv = document.querySelector('.text');
+                textDiv.textContent += content;
+                    
+                }
+              
+            } catch (error) {
+                console.error('Error displaying blog content:', error);
+            }
+        }
+
+        // Call the displayBlogContent function when the page loads
+        window.onload = displayBlogContent;
+    </script>
+</body>
+</html>

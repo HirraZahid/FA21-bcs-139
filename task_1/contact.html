@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- css  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+    <style>
+        .error {
+            border:3px solid red !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="ms-5"> <!-- Adding left margin for space -->
+                <a class="navbar-brand" href="index.html">
+                    <i class="fa-solid fa-globe fa-flip"></i>
+                    On The Trail
+                </a>
+            </div>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mx-auto">
+                    <div class="input-group">
+                        <input class="form-control me-2 text-white" type="search" placeholder="Search ..."
+                            aria-label="Search">
+                        <span class="input-group-text text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Work With Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="me-5"> <!-- Adding right margin for space -->
+                <!-- No changes needed -->
+            </div>
+        </div>
+    </nav>
+    <!-- stickey-div  -->
+
+    <div class="stickey-div d-flex justify-content-around align-items-center flex-column gap-2 py-2">
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-pinterest-p"></i>
+    </div>
+    <!-- stickey-div  -->
+
+    <section id="contact">
+        <div class="contact d-flex flex-column justify-content-center align-items-center">
+            <h1> Contact me here</h1>
+            <div class="contact-list d-flex justify-content-around gap-5 align-items-start flex-wrap ">
+                <p>hirrazahid6666@gmail.com</p>
+                <p>03057705737</p>
+                <div class="contact-icons">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-pinterest-p"></i>
+                </div>
+            </div>
+            <h1>Or just drop me a line here</h1>
+
+
+
+
+            <form action="#" class="contact-form-div" id="myform">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="email" name="email" placeholder="Email*" required>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" required placeholder="Message" rows="15"></textarea>
+                </div>
+
+                <div class="form-group" id="submit-btn-wrapper">
+                    <input type="submit" value="Send Message" id="submit-btn">
+                </div>
+
+            </form>
+
+
+        </div>
+    </section>
+
+
+    <!-- footer  -->
+    <footer>
+        <div class="footer-items d-flex align-items-start justify-content-around p-5 flex-wrap">
+            <div class="footer-logo">
+                <a href="#">
+                    <i class="fa-solid fa-globe"></i>
+                    On The Trail <br>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; My Travel Blog</p>
+                </a>
+            </div>
+            <div class="footer-links  ">
+                <ul>
+                    <li>Home</li>
+                    <li class="footer-links1  ">About Me</li>
+                    <li class="footer-links1  ">Work With Me</li>
+                    <li class="footer-links1  ">As Featured In</li>
+                    <li class="footer-links1  ">Instagram</li>
+                    <li class="footer-links1  ">Contact</li>
+                </ul>
+            </div>
+
+            <div class="footer-form">
+                <p>Subscribe here and get the latest travel tips <br> and my insider secrets!</p>
+                <div class="abc d-flex flex-column align-items-end">
+                    <input type="email" name="" id="" placeholder="Email" class="email">
+                    <button type="button" class="button-58 subscribeBtn">Subscribe</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom d-flex justify-content-center pb-4">
+            <p>&copy; 2024 On The Trail. All rights reserved</p>
+        </div>
+    </footer>
+    <!-- footer  -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!-- <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script> -->
+
+
+    <script>
+        function doBindings() {
+            let submitBtn = document.getElementById("submit-btn");
+            submitBtn.onclick = handleFormSubmit;
+        }
+        $(doBindings);
+
+        function handleFormSubmit(event) {
+            let nameField = $("#name");
+            let emailField = $("#email");
+            let messageField = $("#message"); // Selecting the textarea field
+            let nameRegex = /^[a-zA-Z\s]+$/;// Regular expression to match only alphabetical characters
+ 
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
+
+            // Name validation
+            if (nameField.val()) {
+                if (!nameRegex.test(nameField.val())) {
+                    console.log("Name should contain only alphabetical characters");
+                    event.preventDefault();
+                    nameField.addClass("error");
+                } else {
+                    nameField.removeClass("error");
+                }
+            } else {
+                console.log("Name field is empty");
+                event.preventDefault();
+                nameField.addClass("error");
+            }
+
+            // Email validation
+            if (emailField.val()) {
+                if (!emailRegex.test(emailField.val())) {
+                    console.log("Invalid email format");
+                    event.preventDefault();
+                    emailField.addClass("error");
+                } else {
+                    emailField.removeClass("error");
+                }
+            } else {
+                console.log("Email field is empty");
+                event.preventDefault();
+                emailField.addClass("error");
+            }
+
+            // Message validation
+            if (messageField.val()) {
+                // No specific validation for message field is provided here. You can add your specific validation logic.
+                messageField.removeClass("error");
+            } else {
+                console.log("Message field is empty");
+                event.preventDefault();
+                messageField.addClass("error");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
