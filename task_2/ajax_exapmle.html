@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Restful API Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: white;
+        }
+
+
+
+        .api-btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #clearBtn {
+            background-color: #45a049 !important;
+        }
+
+        .nav-link {
+            color: black;
+        }
+
+        #createTitle,
+        #createContent {
+            width: 500px !important;
+            height: 60px !important;
+            border-radius: 3px;
+            border: 1px solid black;
+            margin-top: -10px;
+        }
+
+        .main-cont {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: auto !important;
+        }
+
+        #createForm {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .form-group {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+        
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="ms-5"> <!-- Adding left margin for space -->
+                <a class="navbar-brand" href="#">
+                    <i class="fa-solid fa-globe fa-flip"></i>
+                    On The Trail
+                </a>
+            </div>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex mx-auto">
+                    <div class="input-group">
+                        <input class="form-control me-2 text-white" type="search" placeholder="Search ..."
+                            aria-label="Search">
+                        <span class="input-group-text text-white"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Work With Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ajax_exapmle.html">AJAX</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="me-5"> <!-- Adding right margin for space -->
+                <!-- No changes needed -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="container  main-cont ">
+        <h2 style="text-align: center; display: block; font-weight: 900; margin-top: 20px;">CRUD OPERATION</h2>
+
+        <!-- Create Form -->
+
+        <form id="createForm">
+            <div class="form-group">
+                <label for="createTitle">Title:</label>
+                <input type="text" class="form-control" id="createTitle" required placeholder="Story Title">
+            </div>
+            <div class="form-group">
+
+                <label for="createContent">Content:</label>
+                <textarea class="form-control" id="createContent" rows="3" required
+                    placeholder="Story Content"></textarea>
+            </div>
+            <br class="api-btns d-flex  ">
+                <button id="createBtn" type="submit" class="btn btn-primary mx-1"
+                    style="background-color: #364037 !important;width: 500px; ">Add Story</button></br>
+                <button id="clearBtn" type="submit" class="btn btn-primary mx-1" style="width: 500px;">Clear</button>
+            </div>
+        </form>
+
+
+        <hr>
+
+        <h2 class="my-4 container" style="text-align: center; display: block; font-weight: 900;">STORIES TABLE</h2>
+
+        <table class="table container">
+            <thead>
+                <tr>
+                    <th style="width: 10%;">ID</th>
+                    <th style="width: 12%;">Story Title</th>
+                    <th style="width: 48%;">Content</th>
+                    <th style="width: 20%;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="storiesList">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- footer  -->
+    <footer>
+        <div class="footer-items d-flex align-items-start justify-content-around p-5 flex-wrap">
+            <div class="footer-logo">
+                <a href="#">
+                    <i class="fa-solid fa-globe"></i>
+                    On The Trail <br>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; My Travel Blog</p>
+                </a>
+            </div>
+            <div class="footer-links  ">
+                <ul>
+                    <li>Home</li>
+                    <li class="footer-links1  ">About Me</li>
+                    <li class="footer-links1  ">Work With Me</li>
+                    <li class="footer-links1  ">As Featured In</li>
+                    <li class="footer-links1  ">Instagram</li>
+                    <li class="footer-links1  ">Contact</li>
+                </ul>
+            </div>
+
+            <div class="footer-form">
+                <p>Subscribe here and get the latest travel tips <br> and my insider secrets!</p>
+                <div class="abc d-flex flex-column align-items-end">
+                    <input type="email" name="" id="" placeholder="Email" class="email">
+                    <button type="button" class="button-58 subscribeBtn">Subscribe</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom d-flex justify-content-center pb-4">
+            <p>&copy; 2024 On The Trail. All rights reserved</p>
+        </div>
+    </footer>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./ajax_example.js"></script>
+
+
+</body>
+
+</html>
