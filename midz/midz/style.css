@@ -1,0 +1,143 @@
+/* railway  */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+/* playfairdisplay  */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --brown: #986C43;
+    --grey: #4C4C4C;
+    --white: #ffffff;
+    --pink: #f4dec9;
+    --red:#DA161F;
+}
+/* header  */
+.topbar{
+    background-color: var(--red);
+    align-items: flex-start;
+}
+.logo{
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: "Playfair";
+    color: var(--white);
+}
+.topbtn button{
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.03rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.topbtn2{
+    border: none !important;
+    
+}
+.topbtn3{
+    background-color: var(--red) !important;
+    border: none !important;
+
+}
+.topbtn3:hover{
+    background-color: #a80810 !important;
+   
+
+}
+.topbtn3 i{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+nav{
+    font-size: 1.5rem;
+    background-color: var(--grey);
+    color: var(--white);
+    padding: 0.8rem;
+    font-weight: 700;
+    
+}
+nav a{
+    font-size: 0.7rem;
+    color: var(--white);
+    font-weight: 700;
+}
+nav a:hover{
+    
+    color: var(--white);
+    text-decoration: underline !important;
+}
+.hero{
+    margin-top: 2rem;
+}
+.hero1{
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.hero11 p{
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.hero11 h1{
+    font-size: 0.8rem;
+    text-wrap: wrap;
+    font-weight: 700;
+}
+.hero12 img{
+    width: 6vw;
+}
+.hero22{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.hero22 h1{
+    font-size: 0.8rem;
+    
+    font-weight: 700;
+}
+.hero22 h2{
+    font-size: 0.8rem;
+    color: #646464;
+    font-weight: 700;
+}
+.hero22 h3{
+    font-size: 0.8rem;
+    color: var(--red);
+    font-weight: 700;
+}
+.hero22 p{
+    font-size: 0.8rem;
+    color: #646464;
+    font-weight: 700;
+}
+.hero22 i{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.section2{
+    margin-top: 2rem;
+}
+.div11 h2{
+font-size: 1rem;
+font-weight: 700;
+}
+.div11{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.div11 h1{
+    color: #646464;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.div11 p{
+    font-size: 1rem;
+}
