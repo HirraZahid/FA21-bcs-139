@@ -1,0 +1,307 @@
+
+  <!-- Sticky div -->
+  <div class="stickey-div d-flex justify-content-around align-items-center flex-column gap-2 py-2">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-pinterest-p"></i>
+  </div>
+
+  <!-- Blog section -->
+  <section id="blogs" class="d-flex flex-column justify-content-center align-items-center">
+    <h1 data-aos="zoom-in" data-aos-duration="3000">Blogs</h1>
+
+    <div class="all-posts">
+      <a href="#" id="allPosts">All Posts</a>
+      <a href="#" id="recents">Recents</a>
+      <a href="./addBlog">Write a blog <i class="bi bi-pencil-square"></i></a>
+    </div>
+
+    <div class="blogs-grid">
+      <div class="grid-container" id="blogsContainer">
+        <!-- Dynamic blog posts will be injected here -->
+      </div>
+    </div>
+  </section>
+<!-- pagination -->
+<div class="pagination1 d-flex align-items-center justify-content-center ">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- css  -->
+<style>
+  /* railway  */
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+  /* playfairdisplay  */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+  .pagination1{
+    margin-bottom: 3vw;
+
+  }
+  .pagination1 .pagination .page-link {
+  color: black;
+}
+.pagination {
+  border: 2px solid #986C43;
+}
+.pagination .page-item {
+  border-right: 2px solid #986C43;
+  font-weight: 600;
+ 
+}
+.pagination .page-item:last-child {
+  border-right: none; /* To remove the border on the last item */
+}
+  #blogs {
+    margin: 15vw;
+    margin-top: 7vw !important;
+    margin-bottom: 7vw !important;
+  }
+  #blogs > h1:first-child {
+    font-size: 30px;
+    font-family: "Playfair Display" !important;
+    font-weight: 700;
+    padding-bottom: 3vw;
+  }
+  #blogs .all-posts {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 2vw;
+    margin-right: auto;
+    text-decoration: none;
+  }
+  #blogs .all-posts a {
+    color: black;
+  }
+  #blogs .all-posts a:hover {
+    color: #986C43;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-sizing: border-box;
+  }
+  .admin {
+    color: #3a3a39;;
+    font-size: 12px;
+  }
+  .admin h2 {
+    font-size: 12px;
+  }
+  .admin-info i {
+    color: #3a3a39;
+    margin-right: 10px;
+  }
+  .main {
+    margin-top: 20px;
+  }
+  .info {
+    padding: 0 2vw 0 2vw;
+  }
+  .title h1 {
+    font-size: 21px;
+    font-family: "Playfair Display" !important;
+    font-weight: 700;
+    line-height: 26px;
+  }
+  .title h1:hover {
+    color: #986C43;
+    cursor: pointer;
+  }
+  .para {
+    font-size: 15px;
+    font-family: "Raleway", sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .para:hover {
+    color: #986C43;
+    cursor: pointer;
+  }
+  .three-dots {
+    position: relative;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+  }
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  .three-dots{
+    cursor: pointer;
+  }
+  .three-dots .dropdown-menu{
+    font-size: 14px;
+    font-weight: 600;
+
+  }
+</style>
+  <!-- AOS JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function renderBlogs(data) {
+      const blogsContainer = document.getElementById('blogsContainer');
+      blogsContainer.innerHTML = '';
+      data.forEach(blog => {
+        const blogItem = document.createElement('div');
+        blogItem.className = 'grid-item d-flex justify-content-center align-items-center flex-column';
+        blogItem.innerHTML = `
+          <div class="imgBlog">
+            <img src="${blog.imageUrl}" alt="" style="height: 376px; width: 469px;">
+          </div>
+          <div class="info">
+            <div class="main d-flex justify-content-between">
+              <div class="admin-info d-flex">
+                <i class="fa-regular fa-user"></i>
+                <div class="admin d-flex flex-column justify-content-start align-items-start">
+                  <h2>${blog.authorName}</h2>
+                  <p>${new Date(blog.date).toLocaleDateString()}</p>
+                </div>
+              </div>
+              <div class="three-dots" data-id="${blog._id}">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="dropdown-menu">
+                  <a href="#" class="update-blog" data-id="${blog._id}">Update Blog</a>
+                  <a href="#" class="delete-blog" data-id="${blog._id}">Delete Blog</a>
+                </div>
+              </div>
+            </div>
+            <div class="title d-flex justify-content-start"><h1 class="title" data-id="${blog._id}">${blog.title}</h1>
+</div>
+            <div class="d-flex justify-content-start">
+              <p class="para text-justify">${blog.content}</p>
+            </div>
+          </div>
+        `;
+        blogsContainer.appendChild(blogItem);
+      });
+
+      // Event listener for clicking on blog titles
+document.querySelectorAll('.title h1').forEach(title => {
+  title.addEventListener('click', function(event) {
+    event.preventDefault();
+    const blogId = this.getAttribute('data-id');
+    window.location.href = `./singleBlog?id=${blogId}`;
+  });
+});
+
+        //hovering and hovering back 
+        
+
+        document.querySelectorAll('.three-dots').forEach(dot => {
+  let timeoutId;
+
+  dot.addEventListener('mouseenter', function (event) {
+    event.preventDefault();
+    const dropdownMenu = this.querySelector('.dropdown-menu');
+    dropdownMenu.style.display = 'block';
+    clearTimeout(timeoutId); // Clear any existing timeout
+  });
+
+  dot.addEventListener('mouseleave', function (event) {
+    event.preventDefault();
+    const dropdownMenu = this.querySelector('.dropdown-menu');
+    timeoutId = setTimeout(() => {
+      dropdownMenu.style.display = 'none';
+    }, 500); // Set a 0.5 second delay
+  });
+});
+
+
+
+      document.querySelectorAll('.update-blog').forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const blogId = this.getAttribute('data-id');
+          window.location.href = `./addBlog?id=${blogId}`;
+        });
+      });
+
+      document.querySelectorAll('.delete-blog').forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+          const blogId = this.getAttribute('data-id');
+          deleteBlog(blogId);
+        });
+      });
+    }
+
+    function fetchBlogs(filter = null) {
+      fetch(`http://localhost:8234/blogs-data?page=2&limit=4`)
+        .then(response => response.json())
+        .then(data => {
+          if (filter === 'recents') {
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const recentBlogs = data.filter(blog => new Date(blog.date) >= oneWeekAgo);
+            renderBlogs(recentBlogs);
+          } else {
+            renderBlogs(data);
+          }
+        })
+        .catch(error => console.error('Error fetching blog data:', error));
+    }
+
+    document.getElementById('allPosts').addEventListener('click', (event) => {
+      event.preventDefault();
+      fetchBlogs();
+    });
+
+    document.getElementById('recents').addEventListener('click', (event) => {
+      event.preventDefault();
+      fetchBlogs('recents');
+    });
+
+    // Initial fetch to display all blogs
+    fetchBlogs();
+
+    // Function to delete a blog
+    function deleteBlog(blogId) {
+      fetch(`http://localhost:8234/blogs-data/${blogId}`, {
+        method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          // Refresh blogs after successful deletion
+          fetchBlogs();
+        } else {
+          throw new Error('Failed to delete blog');
+        }
+      })
+      .catch(error => console.error('Error deleting blog:', error));
+    }
+  </script>
+
