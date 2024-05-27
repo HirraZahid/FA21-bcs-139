@@ -1,0 +1,135 @@
+<div class="signup-div d-flex justify-content-center align-items-center" data-aos="fade-left"
+data-aos-anchor="#example-anchor"
+data-aos-offset="500"
+data-aos-duration="500">
+    <div class="signup-card">
+        <form action="" method="POST">
+            <div class="signup-txt">Register</div>
+            <label class="signup-lables" for="name">Name:</label><br>
+            <input type="text" class="signup-name" name="name" required><br><br>
+
+            <label class="signup-lables" for="email">Email:</label><br>
+            <input type="email" class="signup-email" name="email" required><br><br>
+
+            <label class="signup-lables" for="password">Password:</label><br>
+            <input type="password"   class="signup-password" name="password" required><br><br>
+
+            <% if (typeof errorMessage !== 'undefined') { %>
+                <div class="error-message" style="color:rgb(121, 25, 25);"><%= errorMessage %></div>
+            <% } %>
+
+            
+
+            <input id="signup-btn" type="submit" value="Signup">
+            <!-- or -->
+            <div class="line-container">
+                <div class="left-line"></div>
+                <div class="or">or</div>
+                <div class="right-line"></div>
+              </div>
+              <div>
+                <button class="btn1"> <a class="alrady-user-text" href="/login">Already a user, Login here</a></button>
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+
+    
+    .signup-name,
+    .signup-email,
+    .signup-password {
+        width: 400px !important;
+        height: 40px !important;
+        margin-top: -5px !important;
+        border-radius: 5px;
+        border: none;
+        padding: 1vw;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    #signup-btn {
+        width: 400px;
+        background-color:#364037;
+        /* margin-top: 1vw; */
+        padding: 0.6vw;
+        color: white;
+        font-weight: 600;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+
+    }
+.btn1{
+    width: 400px;
+        background-color:#364037;
+        margin-top: 1vw;
+        padding: 0.6vw;
+        color: white;
+        font-weight: 600;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+}
+    .signup-lables {
+        margin-top: -10px !important;
+        margin-bottom: 1vw;
+        font-weight: 600;
+        color:white;
+    }
+
+    .signup-card {
+        background-color:#986C43;
+        width: 550px;
+        height: 650px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .alrady-user-text{
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 2vw;
+        
+    }
+    .signup-txt{
+        color: white;
+        font-size: 30px;
+        font-weight:700 ;
+        text-align: center;
+        font-size: 40px;
+    font-family: "Playfair Display" !important;
+    margin-bottom: 2vw;
+    }
+    .signup-div{
+        margin: 7vw;
+    }
+    .line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 2vw;
+  padding-bottom: 1vw;
+}
+
+.left-line, .right-line {
+  flex: 1;
+  border-bottom: 2px solid white;
+}
+
+.or {
+  padding: 0 10px;
+  color: white;
+}
+</style>
+<!-- aos  -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>

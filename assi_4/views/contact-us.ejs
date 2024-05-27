@@ -1,0 +1,107 @@
+    
+
+  <section id="contact">
+      <div class="contact d-flex flex-column justify-content-center align-items-center">
+          <h1> Contact me here</h1>
+          <div class="contact-list d-flex justify-content-around gap-5 align-items-start flex-wrap ">
+              <p>hirrazahid6666@gmail.com</p>
+              <p>03057705737</p>
+              <div class="contact-icons">
+                  <i class="fa-brands fa-facebook-f"></i>
+                  <i class="fa-brands fa-instagram"></i>
+                  <i class="fa-brands fa-twitter"></i>
+                  <i class="fa-brands fa-youtube"></i>
+                  <i class="fa-brands fa-pinterest-p"></i>
+              </div>
+          </div>
+          <h1>Or just drop me a line here</h1>
+
+
+
+
+          <form action="#" class="contact-form-div" id="myform">
+              <div class="form-group">
+                  <input type="text" id="name" name="name" placeholder="Name" required>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" id="email" name="email" placeholder="Email*" required>
+              </div>
+
+              <div class="form-group">
+                  <textarea id="message" name="message" required placeholder="Message" rows="15"></textarea>
+              </div>
+
+              <div class="form-group" id="submit-btn-wrapper">
+                  <input type="submit" value="Send Message" id="submit-btn">
+              </div>
+
+          </form>
+
+
+      </div>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+    function doBindings() {
+        let submitBtn = document.getElementById("submit-btn");
+        submitBtn.onclick = handleFormSubmit;
+    }
+    $(doBindings);
+
+    function handleFormSubmit(event) {
+        let nameField = $("#name");
+        let emailField = $("#email");
+        let messageField = $("#message"); // Selecting the textarea field
+        let nameRegex = /^[a-zA-Z\s]+$/;// Regular expression to match only alphabetical characters
+
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression to validate email format
+
+        // Name validation
+        if (nameField.val()) {
+            if (!nameRegex.test(nameField.val())) {
+                console.log("Name should contain only alphabetical characters");
+                event.preventDefault();
+                nameField.addClass("error");
+            } else {
+                nameField.removeClass("error");
+            }
+        } else {
+            console.log("Name field is empty");
+            event.preventDefault();
+            nameField.addClass("error");
+        }
+
+        // Email validation
+        if (emailField.val()) {
+            if (!emailRegex.test(emailField.val())) {
+                console.log("Invalid email format");
+                event.preventDefault();
+                emailField.addClass("error");
+            } else {
+                emailField.removeClass("error");
+            }
+        } else {
+            console.log("Email field is empty");
+            event.preventDefault();
+            emailField.addClass("error");
+        }
+
+        // Message validation
+        if (messageField.val()) {
+            // No specific validation for message field is provided here. You can add your specific validation logic.
+            messageField.removeClass("error");
+        } else {
+            console.log("Message field is empty");
+            event.preventDefault();
+            messageField.addClass("error");
+        }
+    }
+</script>
+
+<style>
+  .error {
+      border:3px solid red !important;
+  }
+</style>
