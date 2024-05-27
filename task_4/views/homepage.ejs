@@ -1,0 +1,301 @@
+<!-- navbar  -->
+<!-- nav-div  -->
+<div class="nav-div d-flex  flex-column align-items-center">
+    <div class="nav-div-img">
+        <img src="images/nav-div.jpg" alt="">
+    </div>
+    <h1>Welcome!</h1>
+    <p>Join my journey</p>
+</div>
+<!-- nav-div  -->
+
+<!-- stickey-div  -->
+
+<div class="stickey-div d-flex justify-content-around align-items-center flex-column gap-2 py-2">
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-youtube"></i>
+    <i class="fa-brands fa-pinterest-p"></i>
+</div>
+<!-- stickey-div  -->
+<!-- home  -->
+<section id="home">
+    <div class="back-img">
+        <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="images/backgroundimg.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="images/background1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/backgroung4.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="post container-fluid  d-flex justify-content-center">
+        <div class="featured-post  ">
+            <h1>Featured Post</h1>
+            <div class="features d-flex justify-content-around  ">
+                <div class="feature-img">
+                    <img src="images/featured-img.jpg" alt="">
+                </div>
+                <div class="feature-text">
+                    <h5>Mar 22, 2023 .2 min</h5>
+                    <h1>Top Hikes In Australia</h1>
+                    <p>Create a blog post subtitle that summarizes your post in a few short, punchy sentences
+                        and
+                        entices your audience to continue reading....
+                        <hr>
+                    </p>
+                    <h6>0 comments</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+<!-- home  -->
+
+
+
+<section id="recentPosts">
+    <div class="container-fluid">
+        <h1>Recent Posts</h1>
+        <div id="recentBlogsContainer" class="row row-cols-1 row-cols-md-3 g-3 d-flex">
+            <!-- Recent blogs will be injected here by JavaScript -->
+        </div>
+        <div class="pagination1 d-flex align-items-center justify-content-center">
+            <nav>
+                <ul id="recentPaginationControls" class="pagination justify-content-center">
+                    <!-- Pagination controls will be injected here by JavaScript -->
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</section>
+
+<!-- recent posts -->
+<!-- midbar -->
+<section class="midbar d-flex justify-content-around align-items-center">
+    <div class="midbar-item d-flex  flex-column justify-content-around align-items-center">
+        <h2>98</h2>
+        <p>Countries Visited</p>
+    </div>
+    <div class="midbar-item d-flex  flex-column justify-content-center align-items-center">
+        <h2>7</h2>
+        <p>Continents Visited</p>
+    </div>
+    <div class="midbar-item d-flex  flex-column justify-content-center align-items-center">
+        <h2>8</h2>
+        <p>Torn Pairs of Shoes</p>
+    </div>
+    <div class="midbar-item d-flex  flex-column justify-content-center align-items-center">
+        <h2>2</h2>
+        <p>Lost Backpacks</p>
+    </div>
+</section>
+<!-- midbar -->
+
+
+<!-- grid -->
+<!-- grid -->
+<section class="photogrid">
+    <div class="container">
+        <div class="row row-cols-md-4 row-cols-sm-2 justify-content-center">
+            <!-- Photo items will be injected here by JavaScript -->
+        </div>
+    </div>
+</section>
+
+
+<!-- grid -->
+
+
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+<style>
+    .pagination1 {
+        margin-bottom: 3vw;
+        margin-top: 3vw;
+
+    }
+
+    .pagination1 .pagination .page-link {
+        color: black;
+    }
+
+    .pagination {
+        border: 2px solid #986C43;
+    }
+
+    .pagination .page-item {
+        border-right: 2px solid #986C43;
+        font-weight: 600;
+
+    }
+
+    .pagination .page-item:last-child {
+        border-right: none;
+        /* To remove the border on the last item */
+    }
+</style>
+<script>
+    const recentBlogsPerPage = 6;
+    let recentCurrentPage = 1;
+    let totalRecentBlogs = 0;
+
+    function renderRecentPagination(totalBlogs) {
+        const totalPages = Math.ceil(totalBlogs / recentBlogsPerPage);
+        const paginationControls = document.getElementById('recentPaginationControls');
+        paginationControls.innerHTML = '';
+
+        // Previous button
+        const prevButton = document.createElement('li');
+        prevButton.className = `page-item ${recentCurrentPage === 1 ? 'disabled' : ''}`;
+        prevButton.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+        prevButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (recentCurrentPage > 1) {
+                recentCurrentPage--;
+                fetchRecentBlogs();
+            }
+        });
+        paginationControls.appendChild(prevButton);
+
+        // Page buttons
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('li');
+            pageButton.className = `page-item ${recentCurrentPage === i ? 'active' : ''}`;
+            pageButton.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                recentCurrentPage = i;
+                fetchRecentBlogs();
+            });
+            paginationControls.appendChild(pageButton);
+        }
+
+        // Next button
+        const nextButton = document.createElement('li');
+        nextButton.className = `page-item ${recentCurrentPage === totalPages ? 'disabled' : ''}`;
+        nextButton.innerHTML = `<a class="page-link" href="#">Next</a>`;
+        nextButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (recentCurrentPage < totalPages) {
+                recentCurrentPage++;
+                fetchRecentBlogs();
+            }
+        });
+        paginationControls.appendChild(nextButton);
+    }
+
+    function renderRecentBlogs(data) {
+        const blogsContainer = document.getElementById('recentBlogsContainer');
+        blogsContainer.innerHTML = '';
+        data.forEach(blog => {
+            const blogItem = document.createElement('div');
+            blogItem.className = 'col';
+            blogItem.innerHTML = `
+            <div class="card">
+              <img src="${blog.imageUrl}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${blog.title}</h5>
+                <hr>
+                <i class="fa-regular fa-message">&nbsp;${blog.comments || 0}</i>
+              </div>
+            </div>
+          `;
+            blogsContainer.appendChild(blogItem);
+        });
+    }
+
+    function fetchRecentBlogs() {
+        fetch('http://localhost:8234/blogs-data')
+            .then(response => response.json())
+            .then(data => {
+                const oneWeekAgo = new Date();
+                oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+                const recentData = data.filter(blog => new Date(blog.date) >= oneWeekAgo);
+                totalRecentBlogs = recentData.length;
+                const start = (recentCurrentPage - 1) * recentBlogsPerPage;
+                const end = start + recentBlogsPerPage;
+                const paginatedData = recentData.slice(start, end);
+                renderRecentBlogs(paginatedData);
+                renderRecentPagination(recentData.length);
+            })
+            .catch(error => console.error('Error fetching recent blog data:', error));
+    }
+
+    // Initial fetch to display recent blogs
+    fetchRecentBlogs();
+</script>
+<!-- Add this script before the closing </body> tag -->
+<script>
+     // JavaScript for photo grid
+     const photosPerPage = 8; // Adjust as needed
+    let photoGridPage = 1;
+    let totalBlogImages = 0;
+    let displayedImages = 0;
+    let fetchedImageUrls = new Set(); // Set to store fetched image URLs
+
+    function renderPhotoGrid(photos) {
+        const photoGridContainer = document.querySelector('.photogrid .row');
+        photos.forEach(photo => {
+            if (!fetchedImageUrls.has(photo.url)) { // Check if the image URL is not already fetched
+                const col = document.createElement('div');
+                col.className = 'col mb-2';
+                const img = document.createElement('img');
+                img.src = photo.url;
+                img.alt = photo.title;
+                col.appendChild(img);
+                photoGridContainer.appendChild(col);
+                fetchedImageUrls.add(photo.url); // Add the fetched image URL to the set
+                displayedImages++; // Increment displayed images count
+            }
+        });
+    }
+
+    function fetchPhotos() {
+        fetch(`http://localhost:8234/blogs-data?page=${photoGridPage}&perPage=${photosPerPage * 2}`) // Fetch more images in each request
+            .then(response => response.json())
+            .then(data => {
+                const totalBlogs = data.length;
+                totalBlogImages += totalBlogs; // Update total blog images count
+                const remainingBlogs = totalBlogs - displayedImages; // Calculate remaining blogs based on displayed images
+                const photosToLoad = Math.min(remainingBlogs, photosPerPage); // Ensure not to load more than photosPerPage
+                const photos = data.map(blog => ({ url: blog.imageUrl, title: blog.title }));
+                renderPhotoGrid(photos);
+                displayedImages += photosToLoad; // Increment displayed images count
+                // No need to check for displayedImages >= totalBlogImages
+            })
+            .catch(error => console.error('Error fetching photos:', error));
+    }
+
+    // Initial fetch to display photos
+    fetchPhotos();
+</script>
