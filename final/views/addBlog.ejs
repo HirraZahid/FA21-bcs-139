@@ -1,0 +1,164 @@
+<!-- stickey-div  -->
+<div class="stickey-div d-flex justify-content-around align-items-center flex-column gap-2 py-2">
+  <i class="fa-brands fa-facebook-f"></i>
+  <i class="fa-brands fa-instagram"></i>
+  <i class="fa-brands fa-twitter"></i>
+  <i class="fa-brands fa-youtube"></i>
+  <i class="fa-brands fa-pinterest-p"></i>
+</div>
+<!-- stickey-div  -->
+
+<section id="addblog">
+  <h1 class="mainh1" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">Share your voice. Write a blog that captivates minds and sparks conversations!</h1>
+  <form id="blogForm">
+    <div class="form-group">
+      <input type="text" id="authorName" placeholder="Author" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="title" placeholder="Title" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="imageUrl" placeholder="Image URL" required>
+    </div>
+    <div class="form-group">
+      <textarea id="content" required placeholder="Start writing your blog here..." rows="15"></textarea>
+    </div>
+    <div class="formgroup">
+      <label for="type" class="select">Select Type</label>
+      <select class="disp" id="type" required>
+        <option value="Tech">Tech</option>
+        <option value="Travel">Travel</option>
+        <!-- Add more options if needed -->
+      </select>
+      <input type="date" id="date" required>
+    </div>
+    <div class="form-group">
+      <label for="isFeatured">Feature this blog?</label>
+      <input type="checkbox" id="isFeatured">
+    </div>
+    <div class="form-group" id="submit-btn-wrapper">
+      <input type="submit" value="Publish Blog" id="submit-btn">
+    </div>
+  </form>
+</section>
+
+<style>
+  .mainh1 {
+    font-size: 30px;
+    font-family: "Playfair Display" !important;
+    padding-bottom: 2vw;
+    text-wrap: wrap;
+    padding-right: 2vw;
+    padding-top: 5vw;
+    text-align: center;
+  }
+
+  .disp {
+    width: 10vw;
+    padding: 1vw;
+    margin-left: 1vw;
+  }
+
+  .formgroup {
+    text-align: center;
+  }
+
+  #date {
+    padding: 1vw;
+    width: 20vw;
+    margin: 2vw 0vw 2vw 2vw;
+  }
+
+  .select {
+    font-weight: 600;
+  }
+
+  .done {
+    border-color: green;
+  }
+
+  .notdone {
+    border-color: red;
+  }
+</style>
+
+<!-- aos  -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('blogForm');
+    const submitBtn = document.getElementById('submit-btn');
+    let isUpdate = false;
+    let updateBlogId = null;
+
+    // Check if we're updating an existing blog
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
+
+    if (blogId) {
+      isUpdate = true;
+      fetch(`http://localhost:8234/blogs-data/${blogId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('authorName').value = data.authorName;
+          document.getElementById('title').value = data.title;
+          document.getElementById('imageUrl').value = data.imageUrl;
+          document.getElementById('content').value = data.content;
+          document.getElementById('type').value = data.type;
+          document.getElementById('date').value = data.date;
+          document.getElementById('isFeatured').checked = data.isFeatured;
+          updateBlogId = blogId;
+        })
+        .catch(error => console.error('Error fetching blog data:', error));
+    }
+
+    submitBtn.addEventListener('click', async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      try {
+        const authorName = document.getElementById('authorName').value;
+        const title = document.getElementById('title').value;
+        const imageUrl = document.getElementById('imageUrl').value;
+        const content = document.getElementById('content').value;
+        const type = document.getElementById('type').value;
+        const date = document.getElementById('date').value;
+        const isFeatured = document.getElementById('isFeatured').checked;
+
+        const blogData = { authorName, title, imageUrl, content, type, date, isFeatured };
+
+        let response;
+        if (isUpdate) {
+          response = await fetch(`/blogs-data/${updateBlogId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(blogData)
+          });
+        } else {
+          response = await fetch('/blogs-data', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(blogData)
+          });
+        }
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+
+        form.reset();
+        submitBtn.value = 'Done';
+        submitBtn.classList.add('done');
+      } catch (error) {
+        console.error(error);
+        submitBtn.value = 'Not Submitted';
+        submitBtn.classList.add('notdone');
+      }
+    });
+  });
+</script>

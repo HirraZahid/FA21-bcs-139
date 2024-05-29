@@ -1,0 +1,87 @@
+<!-- navbar  -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="ms-5"> <!-- Adding left margin for space -->
+            <a class="navbar-brand" href="./">
+                <i class="fa-solid fa-globe fa-flip"></i>
+                On The Trail
+            </a>
+        </div>
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex mx-auto" action="/search" method="GET">
+                <div class="input-group">
+                    <input class="form-control me-2 text-white" type="search" name="query" placeholder="Search ..." aria-label="Search">
+                    <button class="input-group-text text-white" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./blogs">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./about">About Me</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="./contact-us">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./ajaxExample">AJAX</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./visited-blogs">Visited product</a>
+                </li>
+                
+                <% if(!user) { %>
+                  <a href="/login" class="btn btn-primary d-flex justify-content-centermt-2 login-btn">Log In</a>
+                <a href="/register" class="btn btn-primary d-flex  justify-content-center login-btn mx-2">Register</a>
+                  <%  }  %>
+  
+                <% if(user) { %>
+                  <a href="/logout" class="btn btn-primary logout-btn ms-4 ">Log Out</a>
+                  <%  }  %>
+               
+                
+            </ul>
+        </div>
+        <div class="me-5"> <!-- Adding right margin for space -->
+            <!-- No changes needed -->
+        </div>
+    </div>
+  </nav>
+  <style>
+    .login-btn{
+        background-color: #364037;
+        border-color: white;
+        outline: none;
+       
+    }
+    .login-btn:hover{
+        background-color: white;
+        color: #364037;
+        font-weight: 600;
+        outline: none;
+    }
+    .logout-btn{
+        background-color: #364037;
+        border-color: white;
+        outline: none;
+    }
+    .logout-btn:hover{
+        background-color: white;
+        color: #364037;
+        font-weight: 600;
+        outline: none;
+    }
+  </style>
+  

@@ -1,0 +1,206 @@
+
+  <style>
+    /* Pagination CSS */
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vw;
+  }
+
+  .pagination a {
+    color: #413f3f;
+    text-decoration: none;
+    padding: 8px 16px;
+    /* margin: 0 4px; */
+    border: 1px solid #986C43;
+    /* border-radius: 4px; */
+    transition: background-color 0.3s;
+  }
+
+  .pagination a:hover {
+    background-color: #986C43;
+    color: #fff;
+  }
+
+  .pagination .active {
+    background-color: #413f3f;
+    color: #fff;
+  }
+    #Myblog {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between !important;
+      align-items: start;
+      margin: 9vw;
+    }
+
+    .nav-div1 {
+      width: 265px;
+      height: 600px;
+      background-color: var(--brown);
+      padding: 2vw;
+      margin-left: auto;
+      margin-right: 2vw;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    .img1 {
+      margin-bottom: 2vw;
+    }
+
+    .nav-div1 h1 {
+      font-size: 26px;
+      font-weight: 600;
+      font-family: "Playfair Display" !important;
+      padding-top: 2vw;
+      padding-bottom: 2vw;
+    }
+
+    .nav-div1 p {
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav-div-img img {
+      border-radius: 50%;
+      padding-top: 10px;
+      width: 174px;
+      height: 173px;
+    }
+
+    .blog-body p {
+      text-wrap: wrap;
+      display: inline-block;
+    }
+
+    .blog {
+      width: 70%;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+      padding: 2vw;
+      margin-bottom: 2vw;
+    }
+
+    .sideline {
+      border-left: 3px solid #986C43;
+      padding-left: 5px;
+    }
+
+    .sideline p {
+      padding-left: 7px;
+      font-size: 24px;
+      font-family: "Playfair Display" !important;
+      font-weight: 500;
+      line-height: 36px;
+    }
+
+    .top {
+      color: black;
+      font-size: 16px;
+    }
+
+    .top h2 {
+      font-size: 16px;
+    }
+
+    .top i {
+      color: #413f3f;
+      margin-right: 10px;
+    }
+
+    .top p {
+      color: #413f3f;
+      font-size: 16px;
+      text-align: start;
+    }
+
+    .title {
+      font-size: 40px;
+      font-family: "Playfair Display" !important;
+      font-weight: 700;
+      line-height: 26px;
+      padding: 10px 0;
+      text-align: center;
+      margin-bottom: 2vw;
+      color: black;
+    }
+.title a{
+  color: #000;
+}
+    p {
+      font-size: 18px;
+      font-family: "Raleway", sans-serif;
+      line-height: 27px;
+      text-align: justify;
+      padding: 15px 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+  </style>
+
+
+  <!-- stickey-div  -->
+  <div class="stickey-div d-flex justify-content-around align-items-center flex-column gap-2 py-2">
+    <i class="fa-brands fa-facebook-f"></i>
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-youtube"></i>
+    <i class="fa-brands fa-pinterest-p"></i>
+  </div>
+  <!-- stickey-div  -->
+
+  <section id="Myblog" class="d-flex align-items-start justify-content-between">
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+        <div class="blog">
+          <div class="top d-flex align-items-start justify-content-start gap-5">
+            <i class="fa-regular fa-user"></i>
+            <h2 class="author-name"><%= blog.authorName %></h2>
+            <p class="blog-date"><%= new Date(blog.date).toLocaleDateString() %></p>
+          </div>
+          <div class="blog-body">
+            <h1 class="title"><a href="/singleBlog?id=<%= blog._id %>" class="blog-title"><%= blog.title %></a></h1>
+            <div class="img1 d-flex justify-content-center">
+              <img src="<%= blog.imageUrl %>" alt="" style="height: 563px; width: 584px;" class="blog-image">
+            </div>
+            <p class="blog-content"><%= blog.content %></p>
+            <div class="sideline d-flex align-items-center justify-content-center">
+              <p>This is the full blog post</p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No blogs found matching your search query.</p>
+    <% } %>
+
+    <!-- nav-div  -->
+    <div class="nav-div1 d-flex flex-column align-items-center">
+      <div class="nav-div-img">
+        <img src="images/nav-div.jpg" alt="" class="nav-image">
+      </div>
+      <h1>Hi, thanks for dropping by!</h1>
+      <p class="nav-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum error id nemo reiciendis placeat dolor ducimus ipsam itaque aut alias dicta rem dolorem totam commodi provident obcaecati sint, saepe praesentium exercitationem ratione!</p>
+    </div>
+    <!-- nav-div  -->
+  </section>
+  <!-- Pagination -->
+<!-- Pagination -->
+<div class="pagination">
+  <% if (page > 1) { %>
+    <a href="/search?query=<%= searchQuery %>&page=<%= page - 1 %>">Previous</a>
+  <% } %>
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <a href="/search?query=<%= searchQuery %>&page=<%= i %>" class="<%= i === page ? 'active' : '' %>"><%= i %></a>
+  <% } %>
+  <% if (hasNextPage) { %>
+    <a href="/search?query=<%= searchQuery %>&page=<%= page + 1 %>">Next</a>
+  <% } %>
+  
+</div>
+
+
